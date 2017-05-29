@@ -18,6 +18,8 @@ function showInfo(data, tabletop) {
 
   setPictograms(d);
 
+  drawBubbles(d);
+
 }
 
 function sleep(ms) {
@@ -26,11 +28,18 @@ function sleep(ms) {
 
 async function setPictograms(data) {
   await sleep(1000);
-  let proportion = Math.round((data.responseCount/ data.totalStudioCount)*10);
+  let bodsProportion = Math.round((data.responseCount/ data.totalStudioCount)*10);
   let bods = document.querySelectorAll(".responses>span use");
-  console.log("proportion", proportion, bods);
-  for (var i = 0; i < proportion; i++) {
+  console.log("bodsProportion", bodsProportion, bods);
+  for (var i = 0; i < bodsProportion; i++) {
     bods[i].setAttribute("class", "active");
+  }
+
+  let barsProportion = Math.round((data.pcWhy)/10);
+  let bars = document.querySelectorAll(".shared-why>span use");
+  console.log("barsProportion", barsProportion, bars);
+  for (var i = 0; i < barsProportion; i++) {
+    bars[i].setAttribute("class", "active");
   }
 }
 
@@ -40,7 +49,7 @@ function addSVGs() {
     addSVG("1happy.svg",     document.getElementById("1happy"));
     addSVG("2happy.svg",     document.getElementById("2happy"));
     addSVG("4happy.svg",     document.getElementById("4happy"));
-    addSVG("5happy.svg",     document.getElementById("5happy"));
+    // addSVG("5happy.svg",     document.getElementById("5happy"));
     resolve();
   });
 }
@@ -87,31 +96,32 @@ function drawchart(data) {
       height = 550 - margin.top  - margin.bottom;
 
   var colLabel = ["1", "2", "3", "4", "5"];
-  var x = d3.scale.ordinal()
-      .rangeRoundBands([0, width], .1)
+  // var x = d3.scale.ordinal()
+  //     .rangeRoundBands([0, width], .1)
+  //     .domain(colLabel);
+  var x = d3.scaleBand()
+      .rangeRound([0, width], .1)
       .domain(colLabel);
 
-  var xContinuous = d3.scale.linear()
+  var xContinuous = d3.scaleLinear()
       .range([0, width])
       .domain([1, 5]);
 
-  var y = d3.scale.linear()
+  var y = d3.scaleLinear()
       .range([height, 0])
       .domain([0, d3.max(data)]);
 
-window.x = x
-window.y = y
-window.xContinuous = xContinuous
-window.w = width
-window.h = height
+// window.x = x
+// window.y = y
+// window.xContinuous = xContinuous
+// window.w = width
+// window.h = height
 
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom");
+  var xAxis = d3.axisBottom()
+      .scale(x);
 
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left");
+  var yAxis = d3.axisLeft()
+      .scale(y);
 
   var chart = d3.select(".chart")
       // .attr("width", width + margin.left + margin.right)
@@ -145,7 +155,7 @@ window.h = height
       .attr("x", function(d) { return x(d.name); })
       .attr("y", function(d) { return y(d3.max(data)); })
       .attr("height", function(d) { return height - y(d3.max(data)); })
-      .attr("width", x.rangeBand());
+      .attr("width", x.bandwidth());
 
   chart.selectAll(".bar")
       .data(zdata)
@@ -154,14 +164,14 @@ window.h = height
       .attr("x", function(d) { return x(d.name); })
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
-      .attr("width", x.rangeBand())
+      .attr("width", x.bandwidth())
       .attr("fill", function(d) { return d.colour; });
 
   chart.selectAll(".barValueText")
        .data(zdata)
        .enter()
        .append("text")
-       .attr("x", function(d) { return x(d.name) + (x.rangeBand()/2); })
+       .attr("x", function(d) { return x(d.name) + (x.bandwidth()/2); })
        .attr("y", function(d) { return y(d.value) - 3 ; }) //-3 is padding
        .attr("text-anchor", "middle")
        .attr("font-family", "sans-serif")
@@ -180,7 +190,7 @@ window.h = height
        .attr("stroke-linecap", "round");
 
    chart.append("line")
-        .attr("x1", xContinuous(1) + (x.rangeBand()/2))
+        .attr("x1", xContinuous(1) + (x.bandwidth()/2))
         .attr("y1", y(-1))
         .attr("x2", xContinuous(lineX))
         .attr("y2", y(-1))
@@ -189,7 +199,7 @@ window.h = height
         .attr("stroke-linecap", "round");
 
   chart.append("text")
-       .attr("x", xContinuous(1.5) + (x.rangeBand()/2)) //this text positioning is a total mystery!
+       .attr("x", xContinuous(2.5)) //this text positioning is a total mystery!
        .attr("y", y(-2))
        .attr("text-anchor", "left")
        .attr("font-family", "sans-serif")

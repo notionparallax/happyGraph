@@ -12,9 +12,12 @@ svg text {font-family: 'Blender-book';}
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(60px, auto);
+  max-width: 1000px;
+  margin: auto;
 }
 .wrapper div {
   margin-top: 1em;
+  /*outline: 1px solid green;*/
 }
 
 .responses {   grid-column: 1 / 5;  grid-row: 1;     border-bottom: 1px solid silver; font-size: 200%;}
