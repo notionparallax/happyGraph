@@ -188,8 +188,8 @@ function drawchart(data) {
        .attr("y1", y(-0.5))
        .attr("x2", xContinuous(lineX))
        .attr("y2", y(d3.max(data)+1))
+       .attr("class", "average-line")
        .attr("stroke-width", 3)
-       .attr("stroke", "#D9C823")
        .attr("stroke-linecap", "round");
 
    chart.append("line")
@@ -197,8 +197,8 @@ function drawchart(data) {
         .attr("y1", y(-0.5))
         .attr("x2", xContinuous(lineX))
         .attr("y2", y(-0.5))
+        .attr("class", "average-line")
         .attr("stroke-width", 3)
-        .attr("stroke", "#D9C823")
         .attr("stroke-linecap", "round");
 
   chart.append("text")

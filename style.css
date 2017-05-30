@@ -15,7 +15,8 @@ svg text {font-family: 'Blender-book';}
   --grad-c: #878787;
   --grad-d: #3C3C3B;
   --grad-e: #1D1D1B;
-  --accent: #D9C823;
+  /*--accent: #D9C823;*/
+  --accent: #9c27b0;
 }
 
 .wrapper {
@@ -79,3 +80,4 @@ div.bubbles {  grid-column: 5 /11;  grid-row: 1 / 4; border-left:   0.5px solid 
 .question-mark,
 .face-fill{fill:var(--bg);}
 .face-line{fill:none;stroke:var(--bg);stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+.average-line{stroke:var(--accent)}
