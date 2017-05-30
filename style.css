@@ -20,12 +20,23 @@ svg text {font-family: 'Blender-book';}
   /*outline: 1px solid green;*/
 }
 
-.responses {   grid-column: 1 / 5;  grid-row: 1;     border-bottom: 1px solid silver; font-size: 200%;}
-.shared-why {  grid-column: 1 / 5;  grid-row: 2;     border-bottom: 1px solid silver; font-size: 200%;}
+.feeling-pve text {
+    /*fill: red;*/
+}
+
+.feeling-nve text {
+    fill: #D9C823;
+    stroke: black;
+    stroke-opacity: 0.3;
+}
+
+.responses {   grid-column: 1 / 5;  grid-row: 1;     border-bottom: 0.5px solid silver; font-size: 200%;}
+.shared-why {  grid-column: 1 / 5;  grid-row: 2;     border-bottom: 0.5px solid silver; font-size: 200%;}
 .big-graph {   grid-column: 1 / 5;  grid-row: 3 / 5; }
-.bubbles {     grid-column: 5 /11;  grid-row: 1 / 4; }
-.follow {      grid-column: 5 / 7;  grid-row: 4 / 5; }
-.six {         grid-column: 7 /11;  grid-row: 4 / 5; }
+div.bubbles {  grid-column: 5 /11;  grid-row: 1 / 4; border-left:   0.5px solid silver;
+}
+.follow {      grid-column: 5 / 7;  grid-row: 4 / 5; border-left:   0.5px solid silver; padding-left: 1em;}
+.six {         grid-column: 7 /11;  grid-row: 4 / 5; border-left:   0.5px solid silver;}
 
 .inline-svg  { display:inline-block; width: 40%; transform: translateY(0.5em); margin-right: 0.4em; }
 

@@ -36,11 +36,11 @@ function drawBubbles(all_data){
       fauxCSV = [];
   console.log(fauxCSV);
   for (var i = 0; i < pt.length; i++) {
-    let a = {"id": "+." + pt[i], "value": ps[i]};
+    let a = {"id": "pve." + pt[i], "value": ps[i]};
     fauxCSV.push(a);
   }
   for (var i = 0; i < nt.length; i++) {
-    let a = {"id": "-." + nt[i], "value": ns[i]};
+    let a = {"id": "nve." + nt[i], "value": ns[i]};
     fauxCSV.push(a);
   }
 
@@ -61,8 +61,8 @@ function drawBubbles(all_data){
     var node = svg.selectAll(".node")
       .data(pack(root).leaves())
       .enter().append("g")
-        .attr("class", "node")
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+      .attr("class", function(d){return "node feeling-" + d.package;})
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
     node.append("circle")
         .attr("id", function(d) { return d.id; })
@@ -71,7 +71,7 @@ function drawBubbles(all_data){
 
     node.append("clipPath")
         .attr("id", function(d) { return "clip-" + d.id; })
-      .append("use")
+        .append("use")
         .attr("xlink:href", function(d) { return "#" + d.id; });
 
     node.append("text")
@@ -87,7 +87,7 @@ function drawBubbles(all_data){
     node.append("text")
         .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
         .selectAll("tspan")
-        .data(function(d) { return d.package; })
+        .data(function(d) { return d.package == "pve" ? "+":"-"; })
         .enter().append("tspan")
         .attr("x", 0)
         .attr("y", -20)
