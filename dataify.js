@@ -101,6 +101,8 @@ function drawchart(data) {
   //     .domain(colLabel);
   var x = d3.scaleBand()
       .rangeRound([0, width], .1)
+      .paddingInner(0.1)
+      .paddingOuter(0.1)
       .domain(colLabel);
 
   var xContinuous = d3.scaleLinear()
@@ -200,7 +202,7 @@ function drawchart(data) {
 
   chart.append("text")
        .attr("x", xContinuous(2.5)) //this text positioning is a total mystery!
-       .attr("y", y(-2))
+       .attr("y", y(-1))
        .attr("text-anchor", "left")
        .attr("font-family", "sans-serif")
        .attr("font-size", "20px")
