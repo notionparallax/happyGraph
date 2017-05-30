@@ -92,6 +92,7 @@ function drawBubbles(all_data){
         .attr("x", 0)
         .attr("y", -20)
         .attr("font-size", 30)
+        .attr("class", "sign")
         .text(function(d) { return d; });
 
     node.append("title")

@@ -80,3 +80,4 @@ div.bubbles {  grid-column: 5 /11;  grid-row: 1 / 4; border-left:   0.5px solid 
 .face-fill{fill:var(--bg);}
 .face-line{fill:none;stroke:var(--bg);stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
 .average-line{stroke:var(--accent)}
+.sign {font-family: "Blender-bold";}
