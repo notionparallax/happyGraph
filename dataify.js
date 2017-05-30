@@ -1,4 +1,5 @@
-var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1wn9PYCTueDry3xuJC_XqFyYD3IvyNqKNwYvs3F01Puw/pub?gid=0&single=true&output=csv';
+// var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1wn9PYCTueDry3xuJC_XqFyYD3IvyNqKNwYvs3F01Puw/pub?gid=0&single=true&output=csv'; //testing
+var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1UsKQ8d332OZKbBfo1SFXldHJUho3M5nj8BUazv2Gu3M/pubhtml?gid=643881821&single=true'; // live
 
 function init() {
   Tabletop.init( { key: publicSpreadsheetUrl,
