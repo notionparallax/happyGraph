@@ -184,7 +184,7 @@ function drawchart(data) {
   let lineX = calcMean(data);
   chart.append("line")
        .attr("x1", xContinuous(lineX))
-       .attr("y1", y(-1))
+       .attr("y1", y(-0.5))
        .attr("x2", xContinuous(lineX))
        .attr("y2", y(d3.max(data)+1))
        .attr("stroke-width", 3)
@@ -193,9 +193,9 @@ function drawchart(data) {
 
    chart.append("line")
         .attr("x1", xContinuous(1) + (x.bandwidth()/2))
-        .attr("y1", y(-1))
+        .attr("y1", y(-0.5))
         .attr("x2", xContinuous(lineX))
-        .attr("y2", y(-1))
+        .attr("y2", y(-0.5))
         .attr("stroke-width", 3)
         .attr("stroke", "#D9C823")
         .attr("stroke-linecap", "round");
