@@ -15,8 +15,7 @@ svg text {font-family: 'Blender-book';}
   --grad-c: #878787;
   --grad-d: #3C3C3B;
   --grad-e: #1D1D1B;
-  /*--accent: #D9C823;*/
-  --accent: #9c27b0;
+  --accent: #D9C823;
 }
 
 .wrapper {
@@ -66,7 +65,7 @@ div.bubbles {  grid-column: 5 /11;  grid-row: 1 / 4; border-left:   0.5px solid 
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  stroke: var(--grad-e);
   shape-rendering: crispEdges;
 }
 
