@@ -1,5 +1,14 @@
-// var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1wn9PYCTueDry3xuJC_XqFyYD3IvyNqKNwYvs3F01Puw/pub?gid=0&single=true&output=csv'; //testing
-var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1UsKQ8d332OZKbBfo1SFXldHJUho3M5nj8BUazv2Gu3M/pubhtml?gid=643881821&single=true'; // live
+
+var publicSpreadsheetUrl;
+if (window.location.href.split("?")[1].toUpperCase() === "SYD") {
+  publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1UsKQ8d332OZKbBfo1SFXldHJUho3M5nj8BUazv2Gu3M/pubhtml?gid=643881821&single=true'; // live
+} else if (window.location.href.split("?")[1].toUpperCase() === "BNE") {
+  publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1_TttqmqQODdat_eDu1KXaZpN4DFOUdS7qPi76YKeBgI/pub?gid=643881821&single=true'; // live
+} else if (window.location.href.split("?")[1].toUpperCase() === "TEST") {
+  publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1wn9PYCTueDry3xuJC_XqFyYD3IvyNqKNwYvs3F01Puw/pub?gid=0&single=true&output=csv'; //testing
+} else {
+  alert("you need to add ?BNE or ?SYD onto the URL");
+}
 
 function init() {
   Tabletop.init( { key: publicSpreadsheetUrl,
